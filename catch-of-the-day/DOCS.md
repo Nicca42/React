@@ -41,7 +41,7 @@ You can have "smart" components (have functions i.e manipulate the data etc) and
 
 If a function only has a render method and `Prop types` then it is un-needed for the component to be a full react component, but instead make it a stateless functional component.
 
-You change the comonent like so:
+You change the component like so:
 ```
 // currently your component is a `React.component`
 class Header extends React.Component {
@@ -78,6 +78,44 @@ const Header = ({ tagline }) => (
 )
 ```
 
+# L9
 
+### Routing 
 
+Everything is a component, even the Router. 
 
+```
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+const Router = () => (
+    <BrowserRouter>
+        <Switch>
+            <Route>
+                
+            </Route>
+        </Switch>
+    </BrowserRouter>
+)
+```
+The way the switch works is it will first try the first `<Route>` and if that doesn't work it will try the next one etc. 
+
+For the landing page the rout needs to look like such:
+```
+<Route exact path="/" component={StorePicker}/>
+```
+The `exact path` lets the router know this needs to be on the base, the `/`. 
+Then we choose what component to render with the component tag (remember to import the component).
+
+The `Router` component itself needs to be rendered in the `index.js`
+
+Important router examples
+```
+    // The landing page
+<Route exact path="/" component={StorePicker} />
+    // A page that has different variations depending on `storeId`
+<Route path="/store/:storeId" component={App} />
+    // A catch all if there is no path to requested page
+<Route component={NotFound} />
+```
+
+# L10
